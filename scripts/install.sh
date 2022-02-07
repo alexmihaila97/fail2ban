@@ -10,3 +10,5 @@ USR_BIN=$(whereis fail2ban-client | awk -F ':' '{print $2}' | awk -F '/fail2ban-
 chmod -R 777 ${USR_BIN}/fail2ban-client
 echo 'PATH='"${USR_BIN}"':$PATH' >> /etc/profile && echo 'export PATH' >> /etc/profile
 sed -i "s~/usr/bin/fail2ban-client~$(whereis fail2ban-client | awk -F ':' '{print $2}' | cut -c 2-)~g" /etc/rc.d/init.d/fail2ban
+chown -R jelastic /etc/fail2ban/
+chown jelastic /var/log/fail2ban.log
